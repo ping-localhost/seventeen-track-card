@@ -11,6 +11,14 @@ class SeventeenTrackCard extends HTMLElement {
   }
 
   set hass(hass) {
+    const entityId = this.config.entity;
+    const state = hass.states[entityId];
+    const packages = state.attributes.packages;
+
+    if (typeof packages === 'undefined' || packages.length === 0) {
+      return;
+    }
+
     if (!this.content) {
       const card = document.createElement('ha-card');
       const style = document.createElement('style');
@@ -41,10 +49,6 @@ class SeventeenTrackCard extends HTMLElement {
       this.appendChild(style);
       this.appendChild(card);
     }
-
-    const entityId = this.config.entity;
-    const state = hass.states[entityId];
-    const packages = state.attributes.packages;
 
     let card_content = `
       <table>
@@ -77,4 +81,3 @@ class SeventeenTrackCard extends HTMLElement {
 }
 
 customElements.define('seventeen-track-card', SeventeenTrackCard);
-
