@@ -44,3 +44,4 @@ Add a custom element in your `ui-lovelace.yaml`
 
 ![example](example.png)
 
+**Suggestion**: If you set a "memo" in 17Track, it will be displayed in the frontend as well.
