@@ -13,11 +13,7 @@ class SeventeenTrackCard extends HTMLElement {
   set hass(hass) {
     const entityId = this.config.entity;
     const state = hass.states[entityId];
-    const packages = state.attributes.packages;
-
-    if (typeof packages === 'undefined' || packages.length === 0) {
-      return;
-    }
+    const packages = state.attributes.packages != null ? state.attributes.packages : [];
 
     if (!this.content) {
       const card = document.createElement('ha-card');
