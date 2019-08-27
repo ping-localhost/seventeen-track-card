@@ -37,7 +37,7 @@ resources:
 
 ### Step 1
 
-Install HACS as specified here: [Installation guide](https://hacs.netlify.com/installation/manual/).
+Install HACS as per there [Installation guide](https://hacs.netlify.com/installation/manual/).
 
 ### Step 2
 
