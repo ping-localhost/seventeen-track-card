@@ -29,7 +29,7 @@ Link `seventeen-track-card` inside you `ui-lovelace.yaml`.
 
 ```yaml
 resources:
-  - url: /local/seventeen-track-card.js?v=1.0
+  - url: /local/seventeen-track-card.js
     type: js
 ```
 
