@@ -13,14 +13,14 @@ class SeventeenTrackCard extends HTMLElement {
   set hass(hass) {
     const entityId = this.config.entity;
     const state = hass.states[entityId];
-    const packages = state.attributes.packages !== null ? state.attributes.packages : [];
+    const packages = state.attributes.packages != null ? state.attributes.packages : [];
 
     if (!this.content) {
       const card = document.createElement('ha-card');
       const style = document.createElement('style');
       this.content = document.createElement('div');
 
-      card.header = this.config.title !== null ? this.config.title : '17Track.net';
+      card.header = this.config.title != null ? this.config.title : '17Track.net';
       style.textContent = `
         table {
           width: 100%;
@@ -62,7 +62,7 @@ class SeventeenTrackCard extends HTMLElement {
           <tr>
             <td>
               <a href="https://17track.net/en/track#nums=${elem.tracking_number}" target='_blank'>
-                ${elem.friendly_name !== null && elem.friendly_name !== '' ? elem.friendly_name : elem.tracking_number}
+                ${elem.friendly_name != null && elem.friendly_name != '' ? elem.friendly_name : elem.tracking_number}
               </a>
             </td>
             <td>${elem.info_text}</td>
