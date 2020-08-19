@@ -46,18 +46,7 @@ class SeventeenTrackCard extends HTMLElement {
       this.appendChild(card);
     }
 
-    let card_content = `
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-      <tbody>
-    `;
-
-    const updated_content = `
+    const content = `
       ${packages.map(elem => `
           <tr>
             <td>
@@ -66,13 +55,25 @@ class SeventeenTrackCard extends HTMLElement {
               </a>
             </td>
             <td>${elem.info_text}</td>
+            <td>${elem.location != null && elem.location != '' ? elem.location : 'Unknown'}</td>
           </tr>
       `).join('')}
     `;
-    card_content += updated_content;
-    card_content += `</tbody></table>`;
 
-    this.content.innerHTML = card_content;
+    this.content.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+      <tbody>
+        ${content}
+      </tbody>
+      </table>
+    `;
   }
 }
 
