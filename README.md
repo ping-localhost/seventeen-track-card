@@ -39,7 +39,7 @@ resources:
 
 ### Step 1
 
-Install HACS as per there [Installation guide](https://hacs.netlify.com/installation/manual/).
+Install HACS as per there [Installation guide](https://hacs.xyz/docs/installation/prerequisites).
 
 ### Step 2
 
@@ -49,7 +49,7 @@ Add my repository as a custom repostiory in the HACS settings (and be sure to se
 
 Install the card as you are used to and set it up as instructed by HACS, which consists of adding:
 ``` yml
-  - url: /community_plugin/seventeen-track-card/seventeen-track-card.js
+  - url: /hacsfiles/seventeen-track-card/seventeen-track-card.js
     type: js
 ```
 
@@ -66,4 +66,4 @@ Add a custom element in your `ui-lovelace.yaml`
 
 ![example](example.png)
 
-**Suggestion**: If you set a "memo" in 17Track, it will be displayed in the frontend as well.
+**Suggestion**: If you set a ["memo" in 17Track](https://buyer.17track.net/en/myshipment), it will be displayed in the frontend as well.
