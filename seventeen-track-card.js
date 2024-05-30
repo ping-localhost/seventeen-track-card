@@ -1,4 +1,4 @@
-console.info("%c SeventeenTrackCard %c v1.0.1 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray"),
+console.info("%c SeventeenTrackCard %c v1.1.1 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray"),
 class SeventeenTrackCard extends HTMLElement {
   setConfig(config) {
     if (!config.entity) {
