@@ -1,8 +1,10 @@
+console.info("%c SeventeenTrackCard %c v1.1.0 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray"),
 class SeventeenTrackCard extends HTMLElement {
   setConfig(config) {
     if (!config.entity) {
       throw new Error('You need to define an entity');
     }
+
     this.config = config;
   }
 
@@ -13,14 +15,21 @@ class SeventeenTrackCard extends HTMLElement {
   set hass(hass) {
     const entityId = this.config.entity;
     const state = hass.states[entityId];
-    const packages = state.attributes.packages != null ? state.attributes.packages : [];
+    const sortPackages = this.config.sort || false;
+    const packages = state.attributes.packages || [];
+
+    if (sortPackages) {
+      packages.sort((first, second) => {
+        return new Date(first.timestamp).getTime() - new Date(second.timestamp).getTime();
+      });
+    }
 
     if (!this.content) {
       const card = document.createElement('ha-card');
       const style = document.createElement('style');
       this.content = document.createElement('div');
 
-      card.header = this.config.title != null ? this.config.title : '17Track.net';
+      card.header = this.config.title || '17Track.net';
       style.textContent = `
         table {
           width: 100%;
@@ -46,17 +55,20 @@ class SeventeenTrackCard extends HTMLElement {
       this.appendChild(card);
     }
 
+    const formatDate = (input) => input.toISOString().slice(0, 16).replace('T', ' ');
+
     const content = `
       ${packages.map(elem => `
           <tr>
             <td>
-              <a href="https://17track.net/en/track#nums=${elem.tracking_number}" target='_blank'>
-                ${elem.friendly_name != null && elem.friendly_name != '' ? elem.friendly_name : elem.tracking_number}
+              <a href="https://t.17track.net/en#nums=${elem.tracking_number}" target='_blank'>
+                ${elem.friendly_name ? elem.friendly_name : elem.tracking_number}
               </a>
             </td>
             <td>${elem.info_text}</td>
-            <td>${elem.location != null && elem.location != '' ? elem.location : 'Unknown'}</td>
-          </tr>
+            <td>${elem.location ? elem.location : 'Unknown'}</td>
+            <td>${elem.timestamp ? formatDate(new Date(elem.timestamp)) : 'Unknown'}</td>
+            </tr>
       `).join('')}
     `;
 
@@ -67,7 +79,8 @@ class SeventeenTrackCard extends HTMLElement {
             <th>Title</th>
             <th>Status</th>
             <th>Location</th>
-          </tr>
+            <th>Last update</th>
+            </tr>
         </thead>
       <tbody>
         ${content}
