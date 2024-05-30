@@ -9,6 +9,7 @@ Seventeen Track Card is customizable card for the Home Assistant Lovelace front-
 | type | string | **Required** | `custom:seventeen-track-card`
 | entity | string | **Required** | The entity_id of the entity you want to show (for example, `sensor.seventeentrack_packages_in_transit`).
 | title | string | **Optional** | Add a custom title to the card.
+| sort | boolean | **Optional** | Sortes packages by their timestamp (in ascending order)
 
 
 ## Example
