@@ -51,7 +51,7 @@ Add my repository as a custom repostiory in the HACS settings (and be sure to se
 Install the card as you are used to and set it up as instructed by HACS, which consists of adding:
 ``` yml
   - url: /hacsfiles/seventeen-track-card/seventeen-track-card.js
-    type: js
+    type: module
 ```
 
 ### Step 4
