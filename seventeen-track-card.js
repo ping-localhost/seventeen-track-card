@@ -17,8 +17,6 @@ class SeventeenTrackCard extends HTMLElement {
     const sortPackages = this.config.sort || false;
     const packages = state.attributes.packages || [];
 
-    console.info("%c SeventeenTrackCard %c v1.1.2 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray");
-
     if (sortPackages) {
       packages.sort((first, second) => {
         return new Date(first.timestamp).getTime() - new Date(second.timestamp).getTime();
@@ -92,3 +90,4 @@ class SeventeenTrackCard extends HTMLElement {
 }
 
 customElements.define('seventeen-track-card', SeventeenTrackCard);
+console.info("%c SeventeenTrackCard %c v1.1.3 ", "color: orange; font-weight: bold; background: black", "color: white; font-weight: bold; background: dimgray");
