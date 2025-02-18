@@ -17,11 +17,10 @@ class SeventeenTrackCard extends HTMLElement {
 
     // Sorting: use config.sort_order with values "ASC" or "DESC"
     const sortOrder = this.config.sort_order ? this.config.sort_order.toUpperCase() : null;
-    if (sortOrder === "ASC" || sortOrder === "DESC") {
+    if (sortOrder === 'ASC' || sortOrder === 'DESC') {
       packages.sort((first, second) => {
-        const diff =
-          new Date(first.timestamp).getTime() - new Date(second.timestamp).getTime();
-        return sortOrder === "ASC" ? diff : -diff;
+        const diff = new Date(first.timestamp).getTime() - new Date(second.timestamp).getTime();
+        return sortOrder === 'ASC' ? diff : -diff;
       });
     }
 
@@ -31,12 +30,11 @@ class SeventeenTrackCard extends HTMLElement {
       card.header = this.config.title || '17Track.net';
 
       // Table padding: if provided, use the given value for all sides; default is 32px.
-      const pad = this.config.table_padding || "32px";
+      const pad = this.config.table_padding || '32px';
       const tablePadding = `${pad} ${pad} ${pad} ${pad}`;
 
       // Whether to add row separators (default false)
-      const addSeparators =
-        this.config.separator !== undefined ? this.config.separator : false;
+      const addSeparators = this.config.separator !== undefined ? this.config.separator : false;
 
       // Build style content with conditional separator rule
       const style = document.createElement('style');
@@ -54,12 +52,16 @@ class SeventeenTrackCard extends HTMLElement {
         tbody tr:nth-child(even) {
           background-color: var(--secondary-background-color);
         }
-        ${addSeparators ? `
+        ${
+          addSeparators
+            ? `
         /* Add the style for separating rows */
         tbody tr:not(:last-child) {
           box-shadow: 0 1px 0 0 var(--primary-color);
         }
-        ` : ''}
+        `
+            : ''
+        }
         td a {
           color: var(--primary-text-color);
           font-weight: normal;
@@ -73,8 +75,7 @@ class SeventeenTrackCard extends HTMLElement {
     }
 
     // Date formatting function
-    const formatDate = (input) =>
-      input.toISOString().slice(0, 16).replace('T', ' ');
+    const formatDate = input => input.toISOString().slice(0, 16).replace('T', ' ');
 
     // Determine which columns to show (default is true for each)
     const showTitle = this.config.show_title !== false;
@@ -104,7 +105,7 @@ class SeventeenTrackCard extends HTMLElement {
 
     // Build table rows based on visible columns
     const rowsHTML = packages
-      .map((elem) => {
+      .map(elem => {
         let row = '<tr>';
         if (showTitle) {
           row += `
@@ -145,7 +146,7 @@ class SeventeenTrackCard extends HTMLElement {
 
 customElements.define('seventeen-track-card', SeventeenTrackCard);
 console.info(
-  "%c SeventeenTrackCard %c v1.1.3 ",
-  "color: orange; font-weight: bold; background: black",
-  "color: white; font-weight: bold; background: dimgray"
+  '%c SeventeenTrackCard %c v1.1.3 ',
+  'color: orange; font-weight: bold; background: black',
+  'color: white; font-weight: bold; background: dimgray',
 );
