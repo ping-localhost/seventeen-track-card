@@ -146,7 +146,7 @@ class SeventeenTrackCard extends HTMLElement {
 
 customElements.define('seventeen-track-card', SeventeenTrackCard);
 console.info(
-  '%c SeventeenTrackCard %c v1.1.3 ',
+  '%c SeventeenTrackCard %c v1.2.0 ',
   'color: orange; font-weight: bold; background: black',
   'color: white; font-weight: bold; background: dimgray',
 );
