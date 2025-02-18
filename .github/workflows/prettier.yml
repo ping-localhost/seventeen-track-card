@@ -1,0 +1,29 @@
+name: Ensure valid codestyle
+
+on:
+  pull_request:
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+
+      - name: Run Prettier check
+        run: npx prettier --check **/*.js
+
+      - name: Annotate Pull Request with Results
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '⚠️ Prettier found formatting issues. Please run `npx prettier --write **/*.js` to fix them.'
+            })
