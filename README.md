@@ -1,3 +1,7 @@
+> [!WARNING]
+> This no longer works [due to changes](https://github.com/home-assistant/core/issues/144499) to the 17Track integration. Because of this, the project has been archived.
+
+
 # 17Track.net Card
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge)](https://github.com/hacs/integration) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ping-localhost/seventeen-track-card?style=for-the-badge) ![GitHub Release Date](https://img.shields.io/github/release-date/ping-localhost/seventeen-track-card?style=for-the-badge)
